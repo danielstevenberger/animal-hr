@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <input
+    class="form-control mb-5 text-center"
+    type="text"
+    placeholder="Search For Employee Here"
+  />
+  <div class="card-columns justify-content-center">
+    <a
+      onclick="return false;"
+      href="#"
+      *ngFor="let employee of employees"
+      (click)="goToUser(employee)"
+    >
+      <div class="card text-center align-self-center">
+        <img
+          class="card-img-top img-fluid mt-1 align-self-center"
+          src="{{ employee.profileImage }}"
+          alt="Profile Photo"
+          style="max-width: 150px"
+        />
+        <div class="card-body">
+          <h4 class="card-title">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </h4>
+          <p class="card-text m-0">Position: {{ employee.position }}</p>
+          <p class="card-text m-0">Team: {{ employee.team }}</p>
+          <hr />
+          <p class="card-text m-0">{{ employee.performanceRating }}/10</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-5">Employee</h1>
+  <div *ngIf="selectedEmployee">
+    <button class="btn btn-info align-self-start">
+      &larr; Back To Employees
+    </button>
+    <div class="text-center">
+      <img
+        src="{{ selectedEmployee.profileImage }}"
+        alt="Profile"
+        style="width: 200px;"
+      />
+    </div>
+    <h3 class="text-center my-5">
+      {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}
+    </h3>
+    <ul class="list-group text-center">
+      <li class="list-group-item">Position: {{ selectedEmployee.position }}</li>
+      <li class="list-group-item">Team: {{ selectedEmployee.team }}</li>
+      <li class="list-group-item">
+        Salary: ${{ selectedEmployee.salaray | number }}
+      </li>
+      <li class="list-group-item">
+        Performance Rating: {{ selectedEmployee.performanceRating }}/10;
+      </li>
+      <li class="list-group-item">
+        Start Date: {{ selectedEmployee.startDate | date: "longDate" }}
+      </li>
+      <li class="list-group-item">
+        Birth Date: {{ selectedEmployee.birthDate | date: "longDate" }}
+      </li>
+    </ul>
+    <div class="text-center mt-5">
+      <button class="btn btn-info">Edit User</button>
+    </div>
+  </div>
+</div>
