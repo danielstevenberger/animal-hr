@@ -3,6 +3,7 @@ import { EventEmitter } from "@angular/core";
 
 export class EmployeeService {
   employeeSelected = new EventEmitter<Employee>();
+  editEmployeeSelected = new EventEmitter<Employee>();
 
   private employees: Employee[] = [
     new Employee(

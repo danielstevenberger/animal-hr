@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <h1 class="text-center">Edit Employee</h1>
+  <form class="form-group text" *ngIf="selectedEmployee">
+    <label for="profileImage">Profile Image:</label>
+    <select class="form-control mb-3" id="profileImage">
+      <option value="1">{{ selectedEmployee.profileImage }}</option>
+    </select>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="firsName">First Name:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="firstName"
+          value="{{ selectedEmployee.firstName }}"
+        />
+      </div>
+      <div class="col">
+        <label for="lastNamt">Last Name:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="lastName"
+          value="{{ selectedEmployee.lastName }}"
+        />
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="position">Position:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="position"
+          value="{{ selectedEmployee.position }}"
+        />
+      </div>
+      <div class="col">
+        <label for="team">Team:</label>
+        <select class="form-control" id="team">
+          <option value="1">{{ selectedEmployee.team }}</option>
+        </select>
+        <!-- <input
+          class="form-control"
+          type="text"
+          id="team"
+          value="{{ selectedEmployee.team }}"
+        /> -->
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="salary">Salary</label>
+        <input
+          class="form-control"
+          type="number"
+          id="salary"
+          value="{{ selectedEmployee.salary }}"
+        />
+      </div>
+      <div class="col">
+        <label for="performanceRating">Performance Rating:</label>
+        <input
+          class="form-control"
+          type="number"
+          id="performanceRating"
+          value="{{ selectedEmployee.performanceRating }}"
+        />
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="startDate">Start Date:</label>
+        <input class="form-control" type="date" id="startDate" />
+      </div>
+      <div class="col">
+        <label for="birthDate">Birth Date:</label>
+        <input class="form-control" type="date" id="birthDate" />
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <button class="btn btn-success mr-3" type="submit" style="width: 180px;">
+        Save Changes
+      </button>
+      <button class="btn btn-danger" style="width: 180px;">
+        Remove Employee
+      </button>
+    </div>
+  </form>
+</div>

@@ -4,7 +4,7 @@ export class Employee {
   public profileImage: string;
   public position: string;
   public team: string;
-  public salaray: number;
+  public salary: number;
   public performanceRating: number;
   public startDate: Date;
   public birthDate: Date;
@@ -15,7 +15,7 @@ export class Employee {
     profileImage: string,
     position: string,
     team: string,
-    salaray: number,
+    salary: number,
     performanceRating: number,
     startDate: Date,
     birthDate: Date
@@ -25,7 +25,7 @@ export class Employee {
     this.profileImage = profileImage;
     this.position = position;
     this.team = team;
-    this.salaray = salaray;
+    this.salary = salary;
     this.performanceRating = performanceRating;
     this.startDate = startDate;
     this.birthDate = birthDate;

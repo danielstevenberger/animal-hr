@@ -3,22 +3,18 @@ import { EmployeeService } from "src/app/services/employees.service";
 import { Employee } from "src/app/models/employee.model";
 
 @Component({
-  selector: "app-employee",
-  templateUrl: "./employee.component.html",
-  styleUrls: ["./employee.component.css"]
+  selector: "app-edit-employee",
+  templateUrl: "./edit-employee.component.html",
+  styleUrls: ["./edit-employee.component.css"]
 })
-export class EmployeeComponent implements OnInit {
+export class EditEmployeeComponent implements OnInit {
   selectedEmployee: Employee;
 
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
-    this.employeeService.employeeSelected.subscribe(
+    this.employeeService.editEmployeeSelected.subscribe(
       (employee: Employee) => (this.selectedEmployee = employee)
     );
-  }
-
-  editEmployee(employee: Employee) {
-    this.employeeService.editEmployeeSelected.emit(employee);
   }
 }

@@ -18,7 +18,7 @@
       <li class="list-group-item">Position: {{ selectedEmployee.position }}</li>
       <li class="list-group-item">Team: {{ selectedEmployee.team }}</li>
       <li class="list-group-item">
-        Salary: ${{ selectedEmployee.salaray | number }}
+        Salary: ${{ selectedEmployee.salary | number }}
       </li>
       <li class="list-group-item">
         Performance Rating: {{ selectedEmployee.performanceRating }}/10;
@@ -31,7 +31,9 @@
       </li>
     </ul>
     <div class="text-center mt-5">
-      <button class="btn btn-info">Edit User</button>
+      <button class="btn btn-info" (click)="editEmployee(selectedEmployee)">
+        Edit User
+      </button>
     </div>
   </div>
 </div>

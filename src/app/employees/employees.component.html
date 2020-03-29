@@ -3,12 +3,13 @@
     class="form-control mb-5 text-center"
     type="text"
     placeholder="Search For Employee Here"
+    [(ngModel)]="query"
   />
   <div class="card-columns justify-content-center">
     <a
       onclick="return false;"
       href="#"
-      *ngFor="let employee of employees"
+      *ngFor="let employee of employees | search: query"
       (click)="goToUser(employee)"
     >
       <div class="card text-center align-self-center">
