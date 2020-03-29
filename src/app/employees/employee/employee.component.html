@@ -1,17 +1,21 @@
-<div class="container mt-5">
-  <h1 class="text-center mb-5">Employee</h1>
+<div class="container mt-3">
   <div *ngIf="selectedEmployee">
-    <button class="btn btn-info align-self-start">
-      &larr; Back To Employees
-    </button>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-info" routerLink="">
+        &larr; Back To Employees
+      </button>
+      <button class="btn btn-info" routerLink="edit">
+        Edit User
+      </button>
+    </div>
     <div class="text-center">
       <img
         src="{{ selectedEmployee.profileImage }}"
         alt="Profile"
-        style="width: 200px;"
+        style="width: 100px;"
       />
     </div>
-    <h3 class="text-center my-5">
+    <h3 class="text-center my-3">
       {{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}
     </h3>
     <ul class="list-group text-center">
@@ -30,10 +34,11 @@
         Birth Date: {{ selectedEmployee.birthDate | date: "longDate" }}
       </li>
     </ul>
-    <div class="text-center mt-5">
-      <button class="btn btn-info" (click)="editEmployee(selectedEmployee)">
-        Edit User
-      </button>
-    </div>
+  </div>
+  <div *ngIf="!selectedEmployee && id" class="text-center">
+    No Employee with this ID: {{ id }}.
+  </div>
+  <div *ngIf="!selectedEmployee && !id" class="text-center">
+    Employee ID is not valid.
   </div>
 </div>

@@ -18,8 +18,4 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  goToUser(employee: Employee) {
-    this.employeeService.employeeSelected.emit(employee);
-  }
 }

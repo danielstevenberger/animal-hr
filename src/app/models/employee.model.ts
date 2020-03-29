@@ -1,4 +1,5 @@
 export class Employee {
+  public id: number;
   public firstName: string;
   public lastName: string;
   public profileImage: string;
@@ -10,6 +11,7 @@ export class Employee {
   public birthDate: Date;
 
   constructor(
+    id: number,
     firstName: string,
     lastName: string,
     profileImage: string,
@@ -20,6 +22,7 @@ export class Employee {
     startDate: Date,
     birthDate: Date
   ) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.profileImage = profileImage;

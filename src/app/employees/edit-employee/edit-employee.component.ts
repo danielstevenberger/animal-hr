@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EmployeeService } from "src/app/services/employees.service";
 import { Employee } from "src/app/models/employee.model";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-edit-employee",
@@ -9,12 +10,18 @@ import { Employee } from "src/app/models/employee.model";
 })
 export class EditEmployeeComponent implements OnInit {
   selectedEmployee: Employee;
+  id: number;
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.employeeService.editEmployeeSelected.subscribe(
-      (employee: Employee) => (this.selectedEmployee = employee)
-    );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params["id"];
+      this.selectedEmployee = this.employeeService.getEmployee(this.id);
+      console.log("test");
+    });
   }
 }

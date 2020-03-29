@@ -9,7 +9,10 @@ import { EmployeesComponent } from "./employees/employees.component";
 import { EmployeeComponent } from "./employees/employee/employee.component";
 import { EmployeeService } from "./services/employees.service";
 import { SearchPipe } from "./_pipe/search/search.pipe";
-import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee/edit-employee.component";
+import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { TeamsComponent } from "./teams/teams.component";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,11 @@ import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee/e
     EmployeesComponent,
     EmployeeComponent,
     SearchPipe,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    TeamsComponent,
+    PageNotFoundComponent
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
 })

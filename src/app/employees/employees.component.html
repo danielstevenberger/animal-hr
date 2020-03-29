@@ -1,4 +1,5 @@
-<div class="container mt-3">
+<div class="container">
+  <h1 class="display-3 text-center mb-4">Employees</h1>
   <input
     class="form-control mb-5 text-center"
     type="text"
@@ -7,10 +8,9 @@
   />
   <div class="card-columns justify-content-center">
     <a
-      onclick="return false;"
-      href="#"
+      style="cursor: pointer;"
       *ngFor="let employee of employees | search: query"
-      (click)="goToUser(employee)"
+      routerLink="{{ employee.id }}"
     >
       <div class="card text-center align-self-center">
         <img
@@ -30,5 +30,8 @@
         </div>
       </div>
     </a>
+  </div>
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
   </div>
 </div>
