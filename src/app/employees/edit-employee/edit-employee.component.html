@@ -8,10 +8,22 @@
       &larr; Back To Employee
     </button>
     <h1 class="text-center">Edit Employee</h1>
-    <form class="form-group text" *ngIf="selectedEmployee">
+    <form
+      class="form-group text"
+      *ngIf="selectedEmployee"
+      [formGroup]="employeeEditForm"
+      (ngSubmit)="onSubmit()"
+    >
       <label for="profileImage">Profile Image:</label>
-      <select class="form-control mb-3" id="profileImage">
-        <option value="1">{{ selectedEmployee.profileImage }}</option>
+      <select
+        class="form-control mb-3"
+        id="profileImage"
+        formControlName="profileImage"
+      >
+        <option
+          value="https://cdn.pixabay.com/photo/2012/04/18/15/50/zebra-37396_1280.png"
+          >Zebra</option
+        >
       </select>
       <div class="form-row mb-3">
         <div class="col">
@@ -20,7 +32,7 @@
             class="form-control"
             type="text"
             id="firstName"
-            value="{{ selectedEmployee.firstName }}"
+            formControlName="firstName"
           />
         </div>
         <div class="col">
@@ -29,7 +41,7 @@
             class="form-control"
             type="text"
             id="lastName"
-            value="{{ selectedEmployee.lastName }}"
+            formControlName="lastName"
           />
         </div>
       </div>
@@ -40,20 +52,16 @@
             class="form-control"
             type="text"
             id="position"
-            value="{{ selectedEmployee.position }}"
+            formControlName="position"
           />
         </div>
         <div class="col">
           <label for="team">Team:</label>
-          <select class="form-control" id="team">
-            <option value="1">{{ selectedEmployee.team }}</option>
+          <select class="form-control" id="team" formControlName="team">
+            <option value="User Interface Design">User Interface Design</option>
+            <option value="User Database Design">User Database Design</option>
+            <option value="Product Development">Product Development</option>
           </select>
-          <!-- <input
-          class="form-control"
-          type="text"
-          id="team"
-          value="{{ selectedEmployee.team }}"
-        /> -->
         </div>
       </div>
       <div class="form-row mb-3">
@@ -63,7 +71,7 @@
             class="form-control"
             type="number"
             id="salary"
-            value="{{ selectedEmployee.salary }}"
+            formControlName="salary"
           />
         </div>
         <div class="col">
@@ -72,18 +80,28 @@
             class="form-control"
             type="number"
             id="performanceRating"
-            value="{{ selectedEmployee.performanceRating }}"
+            formControlName="performanceRating"
           />
         </div>
       </div>
       <div class="form-row mb-3">
         <div class="col">
           <label for="startDate">Start Date:</label>
-          <input class="form-control" type="date" id="startDate" />
+          <input
+            class="form-control"
+            type="date"
+            id="startDate"
+            formControlName="startDate"
+          />
         </div>
         <div class="col">
           <label for="birthDate">Birth Date:</label>
-          <input class="form-control" type="date" id="birthDate" />
+          <input
+            class="form-control"
+            type="date"
+            id="birthDate"
+            formControlName="birthDate"
+          />
         </div>
       </div>
       <div class="text-center mt-5">
@@ -91,10 +109,17 @@
           class="btn btn-success mr-3"
           type="submit"
           style="width: 180px;"
+          type="submit"
         >
           Save Changes
         </button>
-        <button class="btn btn-danger" style="width: 180px;">
+        <button
+          class="btn btn-danger"
+          style="width: 180px;"
+          type="button"
+          (click)="onRemove()"
+          routerLink=""
+        >
           Remove Employee
         </button>
       </div>

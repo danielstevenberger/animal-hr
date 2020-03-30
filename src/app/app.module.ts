@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -12,7 +12,9 @@ import { SearchPipe } from "./_pipe/search/search.pipe";
 import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { TeamsComponent } from "./teams/teams.component";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { DatePipe } from "@angular/common";
+import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
 
 @NgModule({
   declarations: [
@@ -24,10 +26,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SearchPipe,
     EditEmployeeComponent,
     TeamsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddEmployeeComponent
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [EmployeeService],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
+  providers: [EmployeeService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

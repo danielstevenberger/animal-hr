@@ -7,8 +7,8 @@ export class Employee {
   public team: string;
   public salary: number;
   public performanceRating: number;
-  public startDate: Date;
-  public birthDate: Date;
+  public startDate: string;
+  public birthDate: string;
 
   constructor(
     id: number,
@@ -19,8 +19,8 @@ export class Employee {
     team: string,
     salary: number,
     performanceRating: number,
-    startDate: Date,
-    birthDate: Date
+    startDate: string,
+    birthDate: string
   ) {
     this.id = id;
     this.firstName = firstName;

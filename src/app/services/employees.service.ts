@@ -11,8 +11,8 @@ export class EmployeeService {
       "User Interface Design",
       100000,
       10,
-      new Date(),
-      new Date()
+      "2020-01-03",
+      "1995-03-02"
     ),
     new Employee(
       6,
@@ -23,8 +23,8 @@ export class EmployeeService {
       "User Interface Design",
       90000,
       9,
-      new Date(),
-      new Date()
+      "2015-07-03",
+      "1990-05-10"
     ),
     new Employee(
       7,
@@ -35,8 +35,8 @@ export class EmployeeService {
       "User Interface Design",
       80000,
       8,
-      new Date(),
-      new Date()
+      "2004-11-15",
+      "1980-05-27"
     ),
     new Employee(
       8,
@@ -47,8 +47,8 @@ export class EmployeeService {
       "User Interface Design",
       70000,
       7,
-      new Date(),
-      new Date()
+      "2015-12-04",
+      "1993-04-18"
     )
   ];
 
@@ -56,11 +56,31 @@ export class EmployeeService {
     return this.employees.slice();
   }
 
-  getEmployee(index: number) {
+  getEmployee(id: number) {
     for (let employee of this.employees) {
-      if (employee.id === index) {
+      if (employee.id === id) {
         return employee;
       }
+    }
+  }
+
+  editEmployee(employeeInfo: Employee, id: number) {
+    let i = 0;
+    for (let employee of this.employees) {
+      if (employee.id === id) {
+        this.employees[i] = employeeInfo;
+      }
+      i++;
+    }
+  }
+
+  removeEmployee(id: number) {
+    let i = 0;
+    for (let employee of this.employees) {
+      if (employee.id === id) {
+        this.employees.splice(i, 1);
+      }
+      i++;
     }
   }
 }
