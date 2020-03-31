@@ -6,6 +6,7 @@ import { EmployeeComponent } from "./employees/employee/employee.component";
 import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.component";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/employees", pathMatch: "full" },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     component: HomeComponent,
     children: [
       { path: "", component: EmployeesComponent },
+      { path: "add", component: AddEmployeeComponent },
       {
         path: ":id",
         component: EmployeeComponent

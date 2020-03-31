@@ -1,1 +1,190 @@
-<p>add-employee works!</p>
+<div class="container mt-3">
+  <button class="btn btn-info align-self-center" type="button" routerLink="">
+    &larr; Back To Employees
+  </button>
+  <img
+    class="d-block mx-auto"
+    [src]="employeeAddForm.get('profileImage').value"
+    alt=""
+    style="height: 100px;"
+  />
+  <form
+    class="form-group text"
+    [formGroup]="employeeAddForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <label for="profileImage">Profile Image:</label>
+    <div class="mb-3">
+      <select
+        class="form-control"
+        id="profileImage"
+        formControlName="profileImage"
+        [class.is-invalid]="
+          !employeeAddForm.get('profileImage').valid &&
+          employeeAddForm.get('profileImage').touched
+        "
+      >
+        <option value="../assets/images/dog.png">Dog</option>
+        <option value="../assets/images/elephant.png">Elephant</option>
+        <option value="../assets/images/elk.png">Elk</option>
+        <option value="../assets/images/hippo.png">Hippo</option>
+        <option value="../assets/images/sheep.png">Sheep</option>
+        <option value="../assets/images/tiger.png">Tiger</option>
+        <option value="../assets/images/triceratops.png">Triceraptops</option>
+        <option value="../assets/images/turkey.png">Turkey</option>
+        <option value="../assets/images/walrus.png">Walrus</option>
+        <option value="../assets/images/zebra.png">Zebra</option>
+      </select>
+      <div class="invalid-feedback">
+        Profile image required.
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="firsName">First Name:</label>
+        <input
+          class="form-control"
+          #imagePreview
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          [class.is-invalid]="
+            !employeeAddForm.get('firstName').valid &&
+            employeeAddForm.get('firstName').touched
+          "
+        />
+        <div class="invalid-feedback">
+          First name required.
+        </div>
+      </div>
+      <div class="col">
+        <label for="lastNamt">Last Name:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          [class.is-invalid]="
+            !employeeAddForm.get('lastName').valid &&
+            employeeAddForm.get('lastName').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Last name required.
+        </div>
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="position">Position:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="position"
+          formControlName="position"
+          [class.is-invalid]="
+            !employeeAddForm.get('position').valid &&
+            employeeAddForm.get('position').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Position required.
+        </div>
+      </div>
+      <div class="col">
+        <label for="team">Team:</label>
+        <select
+          class="form-control"
+          id="team"
+          formControlName="team"
+          [class.is-invalid]="
+            !employeeAddForm.get('team').valid &&
+            employeeAddForm.get('team').touched
+          "
+        >
+          <option value="User Interface Design">User Interface Design</option>
+          <option value="User Database Design">User Database Design</option>
+          <option value="Product Development">Product Development</option>
+        </select>
+        <div class="invalid-feedback">
+          Team required.
+        </div>
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="salary">Salary</label>
+        <input
+          class="form-control"
+          type="number"
+          id="salary"
+          formControlName="salary"
+          [class.is-invalid]="
+            !employeeAddForm.get('salary').valid &&
+            employeeAddForm.get('salary').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Salary required.
+        </div>
+      </div>
+      <div class="col">
+        <label for="performanceRating">Performance Rating:</label>
+        <input
+          class="form-control"
+          type="number"
+          id="performanceRating"
+          formControlName="performanceRating"
+          [class.is-invalid]="
+            !employeeAddForm.get('performanceRating').valid &&
+            employeeAddForm.get('performanceRating').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Performance rating required.
+        </div>
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <label for="startDate">Start Date:</label>
+        <input
+          class="form-control"
+          type="date"
+          id="startDate"
+          formControlName="startDate"
+          [class.is-invalid]="
+            !employeeAddForm.get('startDate').valid &&
+            employeeAddForm.get('startDate').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Start date required.
+        </div>
+      </div>
+      <div class="col">
+        <label for="birthDate">Birth Date:</label>
+        <input
+          class="form-control"
+          type="date"
+          id="birthDate"
+          formControlName="birthDate"
+          [class.is-invalid]="
+            !employeeAddForm.get('birthDate').valid &&
+            employeeAddForm.get('birthDate').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Birth date required.
+        </div>
+      </div>
+    </div>
+    <button
+      class="btn btn-success mr-3 mx-auto d-block"
+      type="submit"
+      [disabled]="!employeeAddForm.valid"
+    >
+      Add Employee
+    </button>
+  </form>
+</div>

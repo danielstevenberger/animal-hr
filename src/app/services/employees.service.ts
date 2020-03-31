@@ -1,9 +1,17 @@
 import { Employee } from "src/app/models/employee.model";
 
 export class EmployeeService {
+  private id = 0;
+  private newId: number;
+
+  generateId() {
+    this.id++;
+    return this.id;
+  }
+
   private employees: Employee[] = [
     new Employee(
-      5,
+      this.generateId(),
       "John",
       "Adams",
       "../assets/images/dog.png",
@@ -15,7 +23,7 @@ export class EmployeeService {
       "1995-03-02"
     ),
     new Employee(
-      6,
+      this.generateId(),
       "Jimmy",
       "Washington",
       "../assets/images/walrus.png",
@@ -27,7 +35,7 @@ export class EmployeeService {
       "1990-05-10"
     ),
     new Employee(
-      7,
+      this.generateId(),
       "Timmy",
       "Shapiro",
       "../assets/images/hippo.png",
@@ -39,7 +47,7 @@ export class EmployeeService {
       "1980-05-27"
     ),
     new Employee(
-      8,
+      this.generateId(),
       "Eric",
       "Johnson",
       "../assets/images/turkey.png",
@@ -62,6 +70,34 @@ export class EmployeeService {
         return employee;
       }
     }
+  }
+
+  addEmployee(
+    firstName: string,
+    lastName: string,
+    profileImage: string,
+    position: string,
+    team: string,
+    salary: number,
+    performanceRating: number,
+    startDate: string,
+    birthDate: string
+  ) {
+    this.employees.push(
+      new Employee(
+        (this.newId = this.generateId()),
+        firstName,
+        lastName,
+        profileImage,
+        position,
+        team,
+        salary,
+        performanceRating,
+        startDate,
+        birthDate
+      )
+    );
+    return this.newId;
   }
 
   editEmployee(employeeInfo: Employee, id: number) {

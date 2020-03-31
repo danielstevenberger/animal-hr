@@ -91,7 +91,6 @@ export class EditEmployeeComponent implements OnInit {
     this.router.navigate(["../../", this.selectedEmployee.id], {
       relativeTo: this.route
     });
-    console.log(this.selectedEmployee.id);
   }
 
   onRemove() {
