@@ -15,6 +15,7 @@ import { TeamsComponent } from "./teams/teams.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { DatePipe, CommonModule } from "@angular/common";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
+import { TeamService } from "./services/team.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AddEmployeeComponent } from "./employees/add-employee/add-employee.comp
     ReactiveFormsModule,
     CommonModule
   ],
-  providers: [EmployeeService, DatePipe],
+  providers: [EmployeeService, TeamService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

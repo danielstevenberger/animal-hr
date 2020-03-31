@@ -1,5 +1,8 @@
 import { Employee } from "src/app/models/employee.model";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
+@Injectable()
 export class EmployeeService {
   private id = 0;
   private newId: number;
@@ -28,7 +31,7 @@ export class EmployeeService {
       "Washington",
       "../assets/images/walrus.png",
       "Web Developer",
-      "User Interface Design",
+      "Database Design",
       90000,
       9,
       "2015-07-03",
@@ -40,7 +43,7 @@ export class EmployeeService {
       "Shapiro",
       "../assets/images/hippo.png",
       "Web Developer",
-      "User Interface Design",
+      "User Experience Design",
       80000,
       8,
       "2004-11-15",
@@ -52,7 +55,7 @@ export class EmployeeService {
       "Johnson",
       "../assets/images/turkey.png",
       "Web Developer",
-      "User Interface Design",
+      "Database Design",
       70000,
       7,
       "2015-12-04",

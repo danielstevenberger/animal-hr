@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Team } from "src/app/models/team.model";
+import { TeamService } from "src/app/services/team.service";
 
 @Component({
   selector: "app-add-employee",
@@ -10,12 +12,16 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class AddEmployeeComponent implements OnInit {
   employeeAddForm: FormGroup;
+  teams: Team[];
 
   constructor(
     private employeeService: EmployeeService,
+    private teamService: TeamService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.teams = teamService.getTeams();
+  }
 
   ngOnInit(): void {
     this.employeeAddForm = new FormGroup({

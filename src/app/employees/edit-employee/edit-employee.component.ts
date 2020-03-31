@@ -3,6 +3,8 @@ import { Employee } from "src/app/models/employee.model";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
+import { TeamService } from "src/app/services/team.service";
+import { Team } from "src/app/models/team.model";
 
 @Component({
   selector: "app-edit-employee",
@@ -13,12 +15,16 @@ export class EditEmployeeComponent implements OnInit {
   selectedEmployee: Employee;
   id: number;
   employeeEditForm: FormGroup;
+  teams: Team[];
 
   constructor(
     private employeeService: EmployeeService,
+    private teamService: TeamService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.teams = this.teamService.getTeams();
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {

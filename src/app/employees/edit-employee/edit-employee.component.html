@@ -104,9 +104,12 @@
               employeeEditForm.get('team').touched
             "
           >
-            <option value="User Interface Design">User Interface Design</option>
+            <option *ngFor="let team of teams" value="{{ team.name }}">{{
+              team.name
+            }}</option>
+            <!-- <option value="User Interface Design">User Interface Design</option>
             <option value="User Database Design">User Database Design</option>
-            <option value="Product Development">Product Development</option>
+            <option value="Product Development">Product Development</option> -->
           </select>
         </div>
       </div>
