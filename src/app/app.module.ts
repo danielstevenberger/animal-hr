@@ -13,7 +13,7 @@ import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.c
 import { AppRoutingModule } from "./app-routing.module";
 import { TeamsComponent } from "./teams/teams.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { DatePipe } from "@angular/common";
+import { DatePipe, CommonModule } from "@angular/common";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
 
 @NgModule({
@@ -29,7 +29,13 @@ import { AddEmployeeComponent } from "./employees/add-employee/add-employee.comp
     PageNotFoundComponent,
     AddEmployeeComponent
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    CommonModule
+  ],
   providers: [EmployeeService, DatePipe],
   bootstrap: [AppComponent]
 })

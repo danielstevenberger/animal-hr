@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Employee } from "src/app/models/employee.model";
-import { ActivatedRoute, Params } from "@angular/router";
-import { FormGroup, FormControl } from "@angular/forms";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
-import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-edit-employee",
@@ -18,7 +17,7 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,17 +26,39 @@ export class EditEmployeeComponent implements OnInit {
       this.selectedEmployee = this.employeeService.getEmployee(this.id);
     });
     this.employeeEditForm = new FormGroup({
-      profileImage: new FormControl(null),
-      firstName: new FormControl(this.selectedEmployee.firstName),
-      lastName: new FormControl(this.selectedEmployee.lastName),
-      position: new FormControl(this.selectedEmployee.position),
-      team: new FormControl(this.selectedEmployee.team),
-      salary: new FormControl(this.selectedEmployee.salary),
-      performanceRating: new FormControl(
-        this.selectedEmployee.performanceRating
+      profileImage: new FormControl(
+        this.selectedEmployee.profileImage,
+        Validators.required
       ),
-      startDate: new FormControl(this.selectedEmployee.startDate),
-      birthDate: new FormControl(this.selectedEmployee.birthDate)
+      firstName: new FormControl(
+        this.selectedEmployee.firstName,
+        Validators.required
+      ),
+      lastName: new FormControl(
+        this.selectedEmployee.lastName,
+        Validators.required
+      ),
+      position: new FormControl(
+        this.selectedEmployee.position,
+        Validators.required
+      ),
+      team: new FormControl(this.selectedEmployee.team, Validators.required),
+      salary: new FormControl(
+        this.selectedEmployee.salary,
+        Validators.required
+      ),
+      performanceRating: new FormControl(
+        this.selectedEmployee.performanceRating,
+        Validators.required
+      ),
+      startDate: new FormControl(
+        this.selectedEmployee.startDate,
+        Validators.required
+      ),
+      birthDate: new FormControl(
+        this.selectedEmployee.birthDate,
+        Validators.required
+      )
     });
   }
 
@@ -67,12 +88,17 @@ export class EditEmployeeComponent implements OnInit {
     ).value;
 
     this.employeeService.editEmployee(this.selectedEmployee, this.id);
+    this.router.navigate(["../../", this.selectedEmployee.id], {
+      relativeTo: this.route
+    });
+    console.log(this.selectedEmployee.id);
   }
 
   onRemove() {
     const answer = confirm("Are you sure you want to remove the employee");
     if (answer) {
       this.employeeService.removeEmployee(this.id);
+      this.router.navigate(["../"]);
     }
   }
 }
