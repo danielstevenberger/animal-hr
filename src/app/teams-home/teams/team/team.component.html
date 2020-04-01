@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-info" routerLink="/teams">
+      &larr; Back to teams
+    </button>
+    <button class="btn btn-info" routerLink="edit">
+      Edit team
+    </button>
+  </div>
+  <img
+    class="d-block mx-auto"
+    src="{{ team.image }}"
+    alt="team image"
+    style="height: 100px;"
+  />
+  <h3 class="text-center my-3">{{ team.name }}</h3>
+  <p class="lead text-center">{{ team.description }}</p>
+</div>

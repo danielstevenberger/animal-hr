@@ -11,11 +11,14 @@ import { EmployeeService } from "./services/employees.service";
 import { SearchPipe } from "./_pipe/search/search.pipe";
 import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { TeamsComponent } from "./teams/teams.component";
+import { TeamsComponent } from "./teams-home/teams/teams.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { DatePipe, CommonModule } from "@angular/common";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
 import { TeamService } from "./services/team.service";
+import { TeamComponent } from "./teams-home/teams/team/team.component";
+import { TeamsHomeComponent } from "./teams-home/teams-home.component";
+import { EditTeamComponent } from './teams-home/teams/edit-team/edit-team.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { TeamService } from "./services/team.service";
     EditEmployeeComponent,
     TeamsComponent,
     PageNotFoundComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    TeamComponent,
+    TeamsHomeComponent,
+    EditTeamComponent
   ],
   imports: [
     BrowserModule,

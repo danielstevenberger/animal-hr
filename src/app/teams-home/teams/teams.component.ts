@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { TeamService } from "../services/team.service";
-import { Team } from "../models/team.model";
+import { TeamService } from "src/app/services/team.service";
+import { Team } from "src/app/models/team.model";
 
 @Component({
   selector: "app-teams",
@@ -14,7 +14,6 @@ export class TeamsComponent implements OnInit {
 
   constructor(private teamService: TeamService) {
     this.teams = teamService.getTeams();
-    console.log(this.teams[0]);
   }
 
   ngOnInit(): void {}
