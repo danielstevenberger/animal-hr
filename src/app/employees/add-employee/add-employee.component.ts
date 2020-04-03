@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Team } from "src/app/models/team.model";
-import { TeamService } from "src/app/services/team.service";
 
 @Component({
   selector: "app-add-employee",
@@ -12,16 +10,12 @@ import { TeamService } from "src/app/services/team.service";
 })
 export class AddEmployeeComponent implements OnInit {
   employeeAddForm: FormGroup;
-  teams: Team[];
 
   constructor(
     private employeeService: EmployeeService,
-    private teamService: TeamService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    this.teams = teamService.getTeams();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.employeeAddForm = new FormGroup({
@@ -30,8 +24,15 @@ export class AddEmployeeComponent implements OnInit {
       lastName: new FormControl(null, Validators.required),
       position: new FormControl(null, Validators.required),
       team: new FormControl(null, Validators.required),
-      salary: new FormControl(null, Validators.required),
-      performanceRating: new FormControl(null, Validators.required),
+      salary: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[0-9]+[0-9]*$/)
+      ]),
+      performanceRating: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[0-9]+[0-9]*$/),
+        Validators.max(10)
+      ]),
       startDate: new FormControl(null, Validators.required),
       birthDate: new FormControl(null, Validators.required)
     });
@@ -43,11 +44,11 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeAddForm.get("lastName").value,
       this.employeeAddForm.get("profileImage").value,
       this.employeeAddForm.get("position").value,
-      this.employeeAddForm.get("team").value,
       this.employeeAddForm.get("salary").value,
       this.employeeAddForm.get("performanceRating").value,
       this.employeeAddForm.get("startDate").value,
-      this.employeeAddForm.get("birthDate").value
+      this.employeeAddForm.get("birthDate").value,
+      this.employeeAddForm.get("team").value
     );
 
     console.log(id);

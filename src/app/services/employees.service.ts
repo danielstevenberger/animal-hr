@@ -16,11 +16,11 @@ export class EmployeeService {
       "Adams",
       "../assets/images/dog.png",
       "Web Developer",
-      "User Interface Design",
       100000,
       10,
       "2020-01-03",
-      "1995-03-02"
+      "1995-03-02",
+      "User Interface Design"
     ),
     new Employee(
       this.generateId(),
@@ -28,11 +28,11 @@ export class EmployeeService {
       "Washington",
       "../assets/images/walrus.png",
       "Web Developer",
-      "Database Design",
       90000,
       9,
       "2015-07-03",
-      "1990-05-10"
+      "1990-05-10",
+      "User Experience Design"
     ),
     new Employee(
       this.generateId(),
@@ -40,11 +40,11 @@ export class EmployeeService {
       "Shapiro",
       "../assets/images/hippo.png",
       "Web Developer",
-      "User Experience Design",
       80000,
       8,
       "2004-11-15",
-      "1980-05-27"
+      "1980-05-27",
+      "Database Design"
     ),
     new Employee(
       this.generateId(),
@@ -52,11 +52,11 @@ export class EmployeeService {
       "Johnson",
       "../assets/images/turkey.png",
       "Web Developer",
-      "Database Design",
       70000,
       7,
       "2015-12-04",
-      "1993-04-18"
+      "1993-04-18",
+      "User Experience Design"
     )
   ];
 
@@ -77,11 +77,11 @@ export class EmployeeService {
     lastName: string,
     profileImage: string,
     position: string,
-    team: string,
     salary: number,
     performanceRating: number,
     startDate: string,
-    birthDate: string
+    birthDate: string,
+    team?: string
   ) {
     this.employees.push(
       new Employee(
@@ -90,11 +90,11 @@ export class EmployeeService {
         lastName,
         profileImage,
         position,
-        team,
         salary,
         performanceRating,
         startDate,
-        birthDate
+        birthDate,
+        team
       )
     );
     return this.newId;

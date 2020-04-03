@@ -104,12 +104,11 @@
               employeeEditForm.get('team').touched
             "
           >
-            <option *ngFor="let team of teams" value="{{ team.name }}">{{
-              team.name
-            }}</option>
-            <!-- <option value="User Interface Design">User Interface Design</option>
-            <option value="User Database Design">User Database Design</option>
-            <option value="Product Development">Product Development</option> -->
+            <option value="User Interface Design">User Interface Design</option>
+            <option value="User Experience Design"
+              >User Experience Design</option
+            >
+            <option value="Database Design">Database Design</option>
           </select>
         </div>
       </div>
@@ -127,7 +126,7 @@
             "
           />
           <div class="invalid-feedback">
-            Salary required.
+            Salary required.(Positive number)
           </div>
         </div>
         <div class="col">
@@ -143,7 +142,7 @@
             "
           />
           <div class="invalid-feedback">
-            Performance rating required.
+            Performance rating required.(0-10)
           </div>
         </div>
       </div>
