@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3 text-center m">
+      {{ loginMode ? "Login" : "Sign Up" }}
+    </h1>
+    <hr />
+    <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+      <div class="mb-3">
+        <label for="email">Email:</label>
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          formControlName="email"
+          [class.is-invalid]="
+            !authForm.get('email').valid && authForm.get('email').touched
+          "
+        />
+        <div class="invalid-feedback">Valid email required.</div>
+      </div>
+      <div class="mb-3">
+        <label class="" for="password">Password:</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          formControlName="password"
+          [class.is-invalid]="
+            !authForm.get('password').valid && authForm.get('password').touched
+          "
+        />
+        <div class="invalid-feedback">
+          Valid passowrd required.(6 or more characters)
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <button
+          class="btn btn-success mr-2"
+          style="width: 200px;"
+          type="submit"
+          [disabled]="!authForm.valid"
+        >
+          {{ loginMode ? "Login" : "Sign Up" }}
+        </button>
+        <button
+          class="btn btn-primary ml-2"
+          style="width: 200px;"
+          type="button"
+          (click)="onSwitch()"
+        >
+          Switch to {{ !loginMode ? "Login" : "Sign Up" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

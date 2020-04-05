@@ -7,6 +7,7 @@ import { EditEmployeeComponent } from "./employees/edit-employee/edit-employee.c
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
+import { AuthComponent } from "./auth/auth.component";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/employees", pathMatch: "full" },
@@ -18,15 +19,15 @@ const appRoutes: Routes = [
       { path: "add", component: AddEmployeeComponent },
       {
         path: ":id",
-        component: EmployeeComponent
+        component: EmployeeComponent,
       },
 
-      { path: ":id/edit", component: EditEmployeeComponent }
-    ]
+      { path: ":id/edit", component: EditEmployeeComponent },
+    ],
   },
-
+  { path: "auth", component: AuthComponent },
   { path: "page-not-found", component: PageNotFoundComponent },
-  { path: "**", redirectTo: "/page-not-found" }
+  { path: "**", redirectTo: "/page-not-found" },
   // {
   //   path: "employees",
   //   component: EmployeesComponent,
@@ -39,6 +40,6 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

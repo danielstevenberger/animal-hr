@@ -16,6 +16,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { DatePipe, CommonModule } from "@angular/common";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddEmployeeComponent } from "./employees/add-employee/add-employee.comp
 
     PageNotFoundComponent,
     AddEmployeeComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
