@@ -3,11 +3,12 @@ import { Employee } from "src/app/models/employee.model";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
+import { DataStorageService } from "src/app/services/data-storage.service";
 
 @Component({
   selector: "app-edit-employee",
   templateUrl: "./edit-employee.component.html",
-  styleUrls: ["./edit-employee.component.css"]
+  styleUrls: ["./edit-employee.component.css"],
 })
 export class EditEmployeeComponent implements OnInit {
   selectedEmployee: Employee;
@@ -17,7 +18,8 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataService: DataStorageService
   ) {}
 
   ngOnInit(): void {
@@ -45,14 +47,14 @@ export class EditEmployeeComponent implements OnInit {
       team: new FormControl(this.selectedEmployee.team, Validators.required),
       salary: new FormControl(this.selectedEmployee.salary, [
         Validators.required,
-        Validators.pattern(/^[0-9]+[0-9]*$/)
+        Validators.pattern(/^[0-9]+[0-9]*$/),
       ]),
       performanceRating: new FormControl(
         this.selectedEmployee.performanceRating,
         [
           Validators.required,
           Validators.pattern(/^[0-9]+[0-9]*$/),
-          Validators.max(10)
+          Validators.max(10),
         ]
       ),
       startDate: new FormControl(
@@ -62,7 +64,7 @@ export class EditEmployeeComponent implements OnInit {
       birthDate: new FormControl(
         this.selectedEmployee.birthDate,
         Validators.required
-      )
+      ),
     });
   }
 
@@ -92,8 +94,10 @@ export class EditEmployeeComponent implements OnInit {
     ).value;
 
     this.employeeService.editEmployee(this.selectedEmployee, this.id);
-    this.router.navigate(["../../", this.selectedEmployee.id], {
-      relativeTo: this.route
+    this.dataService.storeEmployees().subscribe((resData) => {
+      this.router.navigate(["../../", this.selectedEmployee.id], {
+        relativeTo: this.route,
+      });
     });
   }
 
@@ -101,7 +105,9 @@ export class EditEmployeeComponent implements OnInit {
     const answer = confirm("Are you sure you want to remove the employee");
     if (answer) {
       this.employeeService.removeEmployee(this.id);
-      this.router.navigate(["../"]);
+      this.dataService.storeEmployees().subscribe((resData) => {
+        this.router.navigate(["../"]);
+      });
     }
   }
 }

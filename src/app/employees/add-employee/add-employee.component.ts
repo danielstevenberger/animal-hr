@@ -2,11 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/services/employees.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { DataStorageService } from "src/app/services/data-storage.service";
 
 @Component({
   selector: "app-add-employee",
   templateUrl: "./add-employee.component.html",
-  styleUrls: ["./add-employee.component.css"]
+  styleUrls: ["./add-employee.component.css"],
 })
 export class AddEmployeeComponent implements OnInit {
   employeeAddForm: FormGroup;
@@ -14,7 +15,8 @@ export class AddEmployeeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataService: DataStorageService
   ) {}
 
   ngOnInit(): void {
@@ -26,15 +28,15 @@ export class AddEmployeeComponent implements OnInit {
       team: new FormControl(null, Validators.required),
       salary: new FormControl(null, [
         Validators.required,
-        Validators.pattern(/^[0-9]+[0-9]*$/)
+        Validators.pattern(/^[0-9]+[0-9]*$/),
       ]),
       performanceRating: new FormControl(null, [
         Validators.required,
         Validators.pattern(/^[0-9]+[0-9]*$/),
-        Validators.max(10)
+        Validators.max(10),
       ]),
       startDate: new FormControl(null, Validators.required),
-      birthDate: new FormControl(null, Validators.required)
+      birthDate: new FormControl(null, Validators.required),
     });
   }
 
@@ -51,9 +53,10 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeAddForm.get("team").value
     );
 
-    console.log(id);
-    this.router.navigate(["../", id], {
-      relativeTo: this.route
+    this.dataService.storeEmployees().subscribe((resDta) => {
+      this.router.navigate(["../", id], {
+        relativeTo: this.route,
+      });
     });
   }
 }
