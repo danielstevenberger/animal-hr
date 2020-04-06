@@ -1,17 +1,31 @@
 <div class="row bg-light" style="height: 50px;">
   <div class="col align-self-center">
-    <a class="nav-link text-dark service">
-      <h4 class="mb-0 ml-2">Animal HR</h4>
+    <a
+      class="nav-link text-dark service"
+      style="cursor: pointer;"
+      (click)="onHome()"
+    >
+      <h4 class="mb-0 ml-5">Animal HR</h4>
     </a>
   </div>
-  <div class="col d-flex ml-auto align-self-center justify-content-end">
-    <a
-      class="nav-link text-dark pr-0"
-      routerLinkActive="active"
-      routerLink="employees"
-      style="cursor: pointer;"
-    >
-      Employees
-    </a>
+  <div class="col d-flex ml-auto mr-5 align-self-center justify-content-end">
+    <div *ngIf="isAuthenticated">
+      <a
+        class="nav-link text-dark pr-0"
+        style="cursor: pointer;"
+        (click)="onAdd()"
+      >
+        Add Employee
+      </a>
+    </div>
+    <div *ngIf="isAuthenticated">
+      <a
+        class="nav-link text-dark pr-0"
+        style="cursor: pointer;"
+        (click)="onLogout()"
+      >
+        Log Out
+      </a>
+    </div>
   </div>
 </div>

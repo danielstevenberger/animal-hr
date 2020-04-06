@@ -11,6 +11,7 @@ import { DataStorageService } from "../services/data-storage.service";
 export class EmployeesComponent implements OnInit {
   query = "";
   search: any = "";
+  isLoading = false;
 
   employees: Employee[];
 
@@ -22,11 +23,13 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.dataService.fetchEmployees().subscribe((employees) => {
       if (employees) {
         this.employeeService.setEmployees(employees);
         this.employees = employees;
       }
+      this.isLoading = false;
       return;
     });
   }

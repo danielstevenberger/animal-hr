@@ -27,6 +27,9 @@ export class EditEmployeeComponent implements OnInit {
       this.id = +params["id"];
       this.selectedEmployee = this.employeeService.getEmployee(this.id);
     });
+    if (!this.selectedEmployee) {
+      this.router.navigate([""]);
+    }
     this.employeeEditForm = new FormGroup({
       profileImage: new FormControl(
         this.selectedEmployee.profileImage,

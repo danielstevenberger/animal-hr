@@ -1,57 +1,87 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1 class="display-3 text-center m">
-      {{ loginMode ? "Login" : "Sign Up" }}
-    </h1>
-    <hr />
-    <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
-      <div class="mb-3">
-        <label for="email">Email:</label>
-        <input
-          class="form-control"
-          type="email"
-          id="email"
-          formControlName="email"
-          [class.is-invalid]="
-            !authForm.get('email').valid && authForm.get('email').touched
-          "
-        />
-        <div class="invalid-feedback">Valid email required.</div>
-      </div>
-      <div class="mb-3">
-        <label class="" for="password">Password:</label>
-        <input
-          class="form-control"
-          type="password"
-          id="password"
-          formControlName="password"
-          [class.is-invalid]="
-            !authForm.get('password').valid && authForm.get('password').touched
-          "
-        />
-        <div class="invalid-feedback">
-          Valid passowrd required.(6 or more characters)
+  <div class="jumbotron mt-3 py-3 px-5">
+    <div *ngIf="isLoading" class="text-center">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      <div class="row align-items-center">
+        <div class="col">
+          {{ error }}
+        </div>
+        <div class="col">
+          <div class="float-right">
+            <button
+              class="btn btn-outline-danger ml-auto"
+              type="button"
+              (click)="onAlert()"
+            >
+              X
+            </button>
+          </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="!isLoading">
+      <h1 class="display-3 text-center">
+        {{ loginMode ? "Login" : "Sign Up" }}
+      </h1>
+      <hr />
+      <div class="row align-items-center justify-content-center">
+        <form
+          (ngSubmit)="onSubmit()"
+          [formGroup]="authForm"
+          style="width: 400px;"
+        >
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input
+              class="form-control"
+              type="email"
+              id="email"
+              formControlName="email"
+              [class.is-invalid]="
+                !authForm.get('email').valid && authForm.get('email').touched
+              "
+            />
+            <div class="invalid-feedback">Valid email required.</div>
+          </div>
+          <div class="mb-3">
+            <label class="" for="password">Password:</label>
+            <input
+              class="form-control"
+              type="password"
+              id="password"
+              formControlName="password"
+              [class.is-invalid]="
+                !authForm.get('password').valid &&
+                authForm.get('password').touched
+              "
+            />
+            <div class="invalid-feedback">
+              Valid passowrd required.(6 or more characters)
+            </div>
+          </div>
 
-      <div class="text-center mt-5">
-        <button
-          class="btn btn-success mr-2"
-          style="width: 200px;"
-          type="submit"
-          [disabled]="!authForm.valid"
-        >
-          {{ loginMode ? "Login" : "Sign Up" }}
-        </button>
-        <button
-          class="btn btn-primary ml-2"
-          style="width: 200px;"
-          type="button"
-          (click)="onSwitch()"
-        >
-          Switch to {{ !loginMode ? "Login" : "Sign Up" }}
-        </button>
+          <div class="d-flex mt-5 justify-content-center">
+            <button
+              class="btn btn-success mr-2"
+              style="width: 200px;"
+              type="submit"
+              [disabled]="!authForm.valid"
+            >
+              {{ loginMode ? "Login" : "Sign Up" }}
+            </button>
+            <button
+              class="btn btn-primary ml-2"
+              style="width: 200px;"
+              type="button"
+              (click)="onSwitch()"
+            >
+              Switch to {{ !loginMode ? "Login" : "Sign Up" }}
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>

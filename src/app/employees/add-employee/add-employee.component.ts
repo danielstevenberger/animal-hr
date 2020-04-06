@@ -52,6 +52,7 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeAddForm.get("birthDate").value,
       this.employeeAddForm.get("team").value
     );
+    console.log(id);
 
     this.dataService.storeEmployees().subscribe((resDta) => {
       this.router.navigate(["../", id], {

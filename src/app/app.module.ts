@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -16,7 +16,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { DatePipe, CommonModule } from "@angular/common";
 import { AddEmployeeComponent } from "./employees/add-employee/add-employee.component";
-import { AuthComponent } from './auth/auth.component';
+import { AuthComponent } from "./auth/auth.component";
+import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
+import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { AuthComponent } from './auth/auth.component';
     EmployeeComponent,
     SearchPipe,
     EditEmployeeComponent,
-
+    LoadingSpinnerComponent,
     PageNotFoundComponent,
     AddEmployeeComponent,
     AuthComponent,
@@ -40,7 +42,15 @@ import { AuthComponent } from './auth/auth.component';
     CommonModule,
     HttpClientModule,
   ],
-  providers: [EmployeeService, DatePipe],
+  providers: [
+    EmployeeService,
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

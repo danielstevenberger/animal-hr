@@ -7,7 +7,17 @@ export class EmployeeService {
   employeesChanged = new Subject<Employee[]>();
 
   generateId() {
-    this.id++;
+    let idArray = [];
+    let i = 0;
+    this.id = 0;
+    for (let employee of this.employees) {
+      idArray.push(this.employees[i].id);
+      i++;
+    }
+
+    while (idArray.includes(this.id)) {
+      this.id++;
+    }
     return this.id;
   }
 

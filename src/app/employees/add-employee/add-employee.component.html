@@ -2,7 +2,13 @@
   <button class="btn btn-info align-self-center" type="button" routerLink="">
     &larr; Back To Employees
   </button>
+  <div
+    *ngIf="!employeeAddForm.get('profileImage').value"
+    class="d-block mx-auto"
+    class="mt-3"
+  ></div>
   <img
+    *ngIf="employeeAddForm.get('profileImage').value"
     class="d-block mx-auto"
     [src]="employeeAddForm.get('profileImage').value"
     alt=""

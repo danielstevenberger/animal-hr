@@ -1,15 +1,13 @@
 <div class="container">
-  <button class="btn btn-info mt-3" type="button" routerLink="add">
-    Add New Employee
-  </button>
-  <h1 class="display-3 text-center mb-4">Employees</h1>
+  <h1 class="display-3 text-center mb-4 mt-3">Employees</h1>
   <input
     class="form-control mb-5 text-center"
     type="text"
     placeholder="Search For Employee Here"
     [(ngModel)]="query"
   />
-  <div *ngIf="employees" class="row">
+
+  <div *ngIf="employees && !isLoading" class="row">
     <div
       class="col-12 col-sm-6 col-md-6 col-lg-3 mb-2"
       *ngFor="let employee of employees | search: query"
@@ -39,8 +37,11 @@
     <router-outlet></router-outlet>
   </div> -->
   </div>
-  <div *ngIf="!employees" class="d-flex flex-column align-items-center">
-    <h3 class="display-4 text-center">No Employees Added</h3>
+  <div
+    *ngIf="!employees && !isLoading"
+    class="d-flex flex-column align-items-center"
+  >
+    <p class="lead text-center">Add your first employee</p>
     <button class="btn btn-info mt-3" type="button" routerLink="add">
       Add New Employee
     </button>
