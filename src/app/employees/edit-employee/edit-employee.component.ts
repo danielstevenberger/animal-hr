@@ -14,6 +14,8 @@ export class EditEmployeeComponent implements OnInit {
   selectedEmployee: Employee;
   id: number;
   employeeEditForm: FormGroup;
+  confirmRemove = false;
+  message: string;
 
   constructor(
     private employeeService: EmployeeService,
@@ -104,13 +106,19 @@ export class EditEmployeeComponent implements OnInit {
     });
   }
 
+  onCancel() {
+    this.confirmRemove = false;
+  }
+
+  onConfirmRemove() {
+    this.employeeService.removeEmployee(this.id);
+    this.dataService.storeEmployees().subscribe((resData) => {
+      this.router.navigate(["../"]);
+    });
+  }
+
   onRemove() {
-    const answer = confirm("Are you sure you want to remove the employee");
-    if (answer) {
-      this.employeeService.removeEmployee(this.id);
-      this.dataService.storeEmployees().subscribe((resData) => {
-        this.router.navigate(["../"]);
-      });
-    }
+    this.message = "Are you sure you want to remove this employee?";
+    this.confirmRemove = true;
   }
 }

@@ -1,0 +1,10 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<div class="app-modal">
+  <p>{{ message }}</p>
+  <div class="modal-action">
+    <button class="btn btn-outline-primary mr-2" (click)="onCancel()">
+      Cancel
+    </button>
+    <button class="btn btn-primary" (click)="onOkay()">Ok</button>
+  </div>
+</div>

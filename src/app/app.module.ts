@@ -19,6 +19,7 @@ import { AddEmployeeComponent } from "./employees/add-employee/add-employee.comp
 import { AuthComponent } from "./auth/auth.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { ModalComponent } from "./modal/modal.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
     PageNotFoundComponent,
     AddEmployeeComponent,
     AuthComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

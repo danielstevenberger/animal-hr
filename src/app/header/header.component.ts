@@ -10,13 +10,24 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  logOut = false;
+  message: string;
 
   private userSub: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogout() {
+    this.message = "Are you sure you want to logout?";
+    this.logOut = true;
+  }
+  onConfirmLogout() {
     this.authService.logout();
+    this.logOut = false;
+  }
+
+  onCancel() {
+    this.logOut = false;
   }
 
   onAdd() {
